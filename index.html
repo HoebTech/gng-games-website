@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games — Game Night Guild</title>
-    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
+    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, the Linked Up word-chain race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -213,6 +213,7 @@
         .game-card--trivia:hover { border-color: rgba(0, 144, 186, 0.35); box-shadow: 0 4px 40px rgba(0, 144, 186, 0.08); }
         .game-card--musicbingo:hover { border-color: rgba(236, 72, 153, 0.35); box-shadow: 0 4px 40px rgba(236, 72, 153, 0.10); }
         .game-card--karaoke:hover { border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 4px 40px rgba(16, 185, 129, 0.10); }
+        .game-card--linkedup:hover { border-color: rgba(143, 92, 214, 0.40); box-shadow: 0 4px 40px rgba(96, 34, 157, 0.12); }
 
         .game-header {
             padding: 2.5rem 2.5rem 1.5rem;
@@ -227,12 +228,14 @@
         .game-icon--trivia { background: var(--cyan-glow); border: 1px solid rgba(0, 144, 186, 0.25); }
         .game-icon--musicbingo { background: var(--pink-glow); border: 1px solid rgba(236, 72, 153, 0.25); }
         .game-icon--karaoke { background: var(--emerald-glow); border: 1px solid rgba(16, 185, 129, 0.25); }
+        .game-icon--linkedup { background: var(--purple-glow); border: 1px solid rgba(96, 34, 157, 0.30); }
 
         .game-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
         .feud-color { color: var(--gold); }
         .trivia-color { color: var(--cyan); }
         .musicbingo-color { color: var(--pink); }
         .karaoke-color { color: var(--emerald); }
+        .linkedup-color { color: var(--purple-bright); }
         .game-tagline { color: var(--text-secondary); font-size: 0.95rem; font-style: italic; }
 
         .game-body { padding: 0 2.5rem 2.5rem; }
@@ -631,6 +634,59 @@
                 </div>
             </div>
 
+            <!-- LINKED UP -->
+            <div class="game-card game-card--linkedup fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--linkedup">🔗</div>
+                    <div>
+                        <h2><span class="linkedup-color">Linked Up</span></h2>
+                        <p class="game-tagline">Two words given. Four hidden. One chain to crack.</p>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">A chain of six words where every neighbor connects — HONEY·MOON, MOON·LIGHT, LIGHT·HOUSE. The first and last words are on the board; the four in the middle are blank. Teams race to fill them in on their phones, and each correct link snaps into place live on the big screen. Rounds climb in difficulty and finish with a double-or-nothing Final Chain — and nobody ever gets eliminated.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📱</span>
+                            <h4>Scan &amp; Play</h4>
+                            <p>QR code or a four-letter code and you're in. Any phone browser — no app, no account, ever.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔒</span>
+                            <h4>Locks In Live</h4>
+                            <p>Type a hidden word and it locks the instant it's right — no submit button. The host's grid lights up in real time.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📈</span>
+                            <h4>Climbing Difficulty</h4>
+                            <p>Each chain is a little tougher than the last, building to a double-or-nothing Final Chain worth double the points.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📺</span>
+                            <h4>Big-Screen Board</h4>
+                            <p>The whole room follows along on a TV, with a cascading top-to-bottom reveal every time a chain is locked.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🤝</span>
+                            <h4>Nobody's Out</h4>
+                            <p>No eliminations — every team plays every round, and the night ends on a champions podium.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🎨</span>
+                            <h4>Custom Chains</h4>
+                            <p>We can build chains around your crowd — local landmarks, inside jokes, theme nights. The host runs it all from a laptop.</p>
+                        </div>
+                    </div>
+
+                    <div class="phones">
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Join</span></div></div>
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">The Chain</span></div></div>
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Big-Screen Board</span></div></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- MUSIC BINGO -->
             <div class="game-card game-card--musicbingo fi">
                 <div class="game-header">
@@ -882,7 +938,7 @@
     <div class="section-inner">
         <div class="section-label">Side by Side</div>
         <h2 class="section-title">Which Game Fits Your Night?</h2>
-        <p class="section-subtitle">Both games run on the same rock-solid tech. The difference is the vibe — pick the one that matches your crowd, or book both for the ultimate game night.</p>
+        <p class="section-subtitle">Every game runs on the same rock-solid tech. The difference is the vibe — pick the one that matches your crowd, or book a few for the ultimate game night.</p>
 
         <div class="table-wrap fi">
             <table class="cmp">
@@ -890,19 +946,20 @@
                     <tr>
                         <th></th>
                         <th>🧠 Trivia</th>
+                        <th>🔗 Linked Up</th>
                         <th>🎵 Music Bingo</th>
                         <th>🎯 Survey Says</th>
                         <th>🎤 Karaoke</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Format</td><td>Question &amp; answer trivia</td><td>Paper bingo with music</td><td>Survey-based guessing</td><td>Live singing performances</td></tr>
-                    <tr><td>Answer Style</td><td>Open-ended or multiple choice</td><td>Dab the card when you hear it</td><td>Open-ended on phones</td><td>Pick your song, sing your heart out</td></tr>
-                    <tr><td>QR Code Join</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-                    <tr><td>TV / Big Screen</td><td>Live leaderboard display</td><td>Optional "Now Playing" display</td><td>Dramatic answer reveals</td><td>Lyrics + live singer queue</td></tr>
-                    <tr><td>Custom Content</td><td>Custom categories &amp; questions</td><td>Custom playlists for any era or theme</td><td>Custom surveys for any theme</td><td>Curated songbooks for any era or theme</td></tr>
-                    <tr><td>Best For</td><td>Classic trivia lovers, competition</td><td>Social nights, weddings, mixed crowds</td><td>High energy, crowd interaction</td><td>Birthdays, parties, anyone ready to perform</td></tr>
-                    <tr><td>Crowd Vibe</td><td>Competitive, strategic, focused</td><td>Nostalgic, unplugged, sing-along</td><td>Loud, chaotic, hilarious</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
+                    <tr><td>Format</td><td>Question &amp; answer trivia</td><td>Word-chain puzzle race</td><td>Paper bingo with music</td><td>Survey-based guessing</td><td>Live singing performances</td></tr>
+                    <tr><td>Answer Style</td><td>Open-ended or multiple choice</td><td>Type the hidden words on phones</td><td>Dab the card when you hear it</td><td>Open-ended on phones</td><td>Pick your song, sing your heart out</td></tr>
+                    <tr><td>QR Code Join</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+                    <tr><td>TV / Big Screen</td><td>Live leaderboard display</td><td>Cascading chain reveals</td><td>Optional "Now Playing" display</td><td>Dramatic answer reveals</td><td>Lyrics + live singer queue</td></tr>
+                    <tr><td>Custom Content</td><td>Custom categories &amp; questions</td><td>Custom chains for any theme</td><td>Custom playlists for any era or theme</td><td>Custom surveys for any theme</td><td>Curated songbooks for any era or theme</td></tr>
+                    <tr><td>Best For</td><td>Classic trivia lovers, competition</td><td>Word lovers; nobody gets eliminated</td><td>Social nights, weddings, mixed crowds</td><td>High energy, crowd interaction</td><td>Birthdays, parties, anyone ready to perform</td></tr>
+                    <tr><td>Crowd Vibe</td><td>Competitive, strategic, focused</td><td>Clever, collaborative, inclusive</td><td>Nostalgic, unplugged, sing-along</td><td>Loud, chaotic, hilarious</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
                 </tbody>
             </table>
         </div>
