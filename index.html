@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games — Game Night Guild</title>
-    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, the Linked Up word-chain race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
+    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -41,6 +41,10 @@
             --emerald: #10B981;
             --emerald-bright: #34D399;
             --emerald-glow: rgba(16, 185, 129, 0.15);
+
+            --coral: #F2683C;
+            --coral-bright: #FA8A5C;
+            --coral-glow: rgba(242, 104, 60, 0.16);
 
             --brown: #63492D;
 
@@ -214,6 +218,7 @@
         .game-card--musicbingo:hover { border-color: rgba(236, 72, 153, 0.35); box-shadow: 0 4px 40px rgba(236, 72, 153, 0.10); }
         .game-card--karaoke:hover { border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 4px 40px rgba(16, 185, 129, 0.10); }
         .game-card--linkedup:hover { border-color: rgba(143, 92, 214, 0.40); box-shadow: 0 4px 40px rgba(96, 34, 157, 0.12); }
+        .game-card--offthetop:hover { border-color: rgba(250, 138, 92, 0.40); box-shadow: 0 4px 40px rgba(242, 104, 60, 0.12); }
 
         .game-header {
             padding: 2.5rem 2.5rem 1.5rem;
@@ -229,6 +234,7 @@
         .game-icon--musicbingo { background: var(--pink-glow); border: 1px solid rgba(236, 72, 153, 0.25); }
         .game-icon--karaoke { background: var(--emerald-glow); border: 1px solid rgba(16, 185, 129, 0.25); }
         .game-icon--linkedup { background: var(--purple-glow); border: 1px solid rgba(96, 34, 157, 0.30); }
+        .game-icon--offthetop { background: var(--coral-glow); border: 1px solid rgba(242, 104, 60, 0.30); }
 
         .game-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
         .feud-color { color: var(--gold); }
@@ -236,6 +242,7 @@
         .musicbingo-color { color: var(--pink); }
         .karaoke-color { color: var(--emerald); }
         .linkedup-color { color: var(--purple-bright); }
+        .offthetop-color { color: var(--coral-bright); }
         .game-tagline { color: var(--text-secondary); font-size: 0.95rem; font-style: italic; }
 
         .game-body { padding: 0 2.5rem 2.5rem; }
@@ -581,59 +588,6 @@
 
         <div class="game-showcase">
 
-            <!-- TRIVIA -->
-            <div class="game-card game-card--trivia fi">
-                <div class="game-header">
-                    <div class="game-icon game-icon--trivia">🧠</div>
-                    <div>
-                        <h2><span class="trivia-color">Trivia</span></h2>
-                        <p class="game-tagline">Themed rounds. Tough questions. One team walks away bragging.</p>
-                    </div>
-                </div>
-                <div class="game-body">
-                    <p class="game-desc">Classic trivia, upgraded. Themed rounds of questions — from pop culture to history to the weird stuff nobody expects. Teams answer on their phones, our software handles scoring, and a live leaderboard keeps the competition fierce. Choose open-ended questions for the purists or multiple choice for faster-paced nights.</p>
-
-                    <div class="features">
-                        <div class="feat">
-                            <span class="ico">📱</span>
-                            <h4>Scan &amp; Play</h4>
-                            <p>Same frictionless entry — QR code, team name, done. Works on any phone browser, no downloads ever.</p>
-                        </div>
-                        <div class="feat">
-                            <span class="ico">🎲</span>
-                            <h4>Multiple Choice Mode</h4>
-                            <p>Auto-scored on submission — perfect for fast rounds. Or go open-ended for the real trivia heads.</p>
-                        </div>
-                        <div class="feat">
-                            <span class="ico">🔗</span>
-                            <h4>Stay Connected</h4>
-                            <p>Players stay connected all game — even if they switch apps or lock their phone. Pick up right where you left off.</p>
-                        </div>
-                        <div class="feat">
-                            <span class="ico">🏅</span>
-                            <h4>Live Leaderboard</h4>
-                            <p>Real-time standings after every round. Watch the lead change and the rivalries build all night long.</p>
-                        </div>
-                        <div class="feat">
-                            <span class="ico">✨</span>
-                            <h4>Endless Categories</h4>
-                            <p>Need a theme night? We can build custom trivia in any category. 90s hip-hop? NC history? Cat facts? Done.</p>
-                        </div>
-                        <div class="feat">
-                            <span class="ico">📊</span>
-                            <h4>Perfect Pacing</h4>
-                            <p>Structured for a perfect-length game night. Enough rounds to crown a real winner without losing the crowd.</p>
-                        </div>
-                    </div>
-
-                    <div class="phones">
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-join.jpeg" alt="Team Join Screen"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-question.jpeg" alt="Question View"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-leaderboard.jpeg" alt="Leaderboard"></div></div>
-                    </div>
-                </div>
-            </div>
-
             <!-- LINKED UP -->
             <div class="game-card game-card--linkedup fi">
                 <div class="game-header">
@@ -779,6 +733,59 @@
                 </div>
             </div>
 
+            <!-- OFF THE TOP -->
+            <div class="game-card game-card--offthetop fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--offthetop">💭</div>
+                    <div>
+                        <h2><span class="offthetop-color">Off the Top</span></h2>
+                        <p class="game-tagline">Seven answers. First letters only. Beat the clock.</p>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">A fill-in-the-blank prompt with seven top survey answers — the kind of question where everyone at the table has a guess. The board reveals the first letter of each answer and masks the rest; teams race to type them on their phones, and every slot locks the instant a team nails it. Stuck tables can spend points to buy a hint letter. Questions climb in difficulty and finish with a double-or-nothing Final — and nobody ever gets eliminated.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📱</span>
+                            <h4>Scan &amp; Play</h4>
+                            <p>QR code or a four-letter code and you're in. Any phone browser — no app, no account, ever.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔓</span>
+                            <h4>Locks On Sight</h4>
+                            <p>Type an answer and the matching slot locks the moment you nail it — no submit button, no waiting your turn.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">💡</span>
+                            <h4>Buy a Hint</h4>
+                            <p>Stuck on the board? Spend a few points to reveal another letter and keep your table in the hunt.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📺</span>
+                            <h4>Big-Screen Board</h4>
+                            <p>The whole room watches the seven-slot board fill in live, one satisfying reveal at a time.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📈</span>
+                            <h4>Climbing Difficulty</h4>
+                            <p>Questions get tougher as the night goes on, building to a double-or-nothing Final worth double the points.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🤝</span>
+                            <h4>Nobody's Out</h4>
+                            <p>No eliminations — every team plays every question, and the night ends on a champions podium.</p>
+                        </div>
+                    </div>
+
+                    <div class="phones">
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Join</span></div></div>
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">The Board</span></div></div>
+                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Big-Screen Board</span></div></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- FAMILY FEUD -->
             <div class="game-card game-card--feud fi">
                 <div class="game-header">
@@ -828,6 +835,59 @@
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-join.jpeg" alt="Team Join Screen"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-answer.jpeg" alt="Answer Entry"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-scoreboard.jpeg" alt="Live Scoreboard"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRIVIA -->
+            <div class="game-card game-card--trivia fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--trivia">🧠</div>
+                    <div>
+                        <h2><span class="trivia-color">Trivia</span></h2>
+                        <p class="game-tagline">Themed rounds. Tough questions. One team walks away bragging.</p>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">Classic trivia, upgraded. Themed rounds of questions — from pop culture to history to the weird stuff nobody expects. Teams answer on their phones, our software handles scoring, and a live leaderboard keeps the competition fierce. Choose open-ended questions for the purists or multiple choice for faster-paced nights.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📱</span>
+                            <h4>Scan &amp; Play</h4>
+                            <p>Same frictionless entry — QR code, team name, done. Works on any phone browser, no downloads ever.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🎲</span>
+                            <h4>Multiple Choice Mode</h4>
+                            <p>Auto-scored on submission — perfect for fast rounds. Or go open-ended for the real trivia heads.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔗</span>
+                            <h4>Stay Connected</h4>
+                            <p>Players stay connected all game — even if they switch apps or lock their phone. Pick up right where you left off.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🏅</span>
+                            <h4>Live Leaderboard</h4>
+                            <p>Real-time standings after every round. Watch the lead change and the rivalries build all night long.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">✨</span>
+                            <h4>Endless Categories</h4>
+                            <p>Need a theme night? We can build custom trivia in any category. 90s hip-hop? NC history? Cat facts? Done.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📊</span>
+                            <h4>Perfect Pacing</h4>
+                            <p>Structured for a perfect-length game night. Enough rounds to crown a real winner without losing the crowd.</p>
+                        </div>
+                    </div>
+
+                    <div class="phones">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-join.jpeg" alt="Team Join Screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-question.jpeg" alt="Question View"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-leaderboard.jpeg" alt="Leaderboard"></div></div>
                     </div>
                 </div>
             </div>
@@ -945,21 +1005,22 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>🧠 Trivia</th>
                         <th>🔗 Linked Up</th>
                         <th>🎵 Music Bingo</th>
+                        <th>💭 Off the Top</th>
                         <th>🎯 Survey Says</th>
+                        <th>🧠 Trivia</th>
                         <th>🎤 Karaoke</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Format</td><td>Question &amp; answer trivia</td><td>Word-chain puzzle race</td><td>Paper bingo with music</td><td>Survey-based guessing</td><td>Live singing performances</td></tr>
-                    <tr><td>Answer Style</td><td>Open-ended or multiple choice</td><td>Type the hidden words on phones</td><td>Dab the card when you hear it</td><td>Open-ended on phones</td><td>Pick your song, sing your heart out</td></tr>
-                    <tr><td>QR Code Join</td><td class="chk">✓</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-                    <tr><td>TV / Big Screen</td><td>Live leaderboard display</td><td>Cascading chain reveals</td><td>Optional "Now Playing" display</td><td>Dramatic answer reveals</td><td>Lyrics + live singer queue</td></tr>
-                    <tr><td>Custom Content</td><td>Custom categories &amp; questions</td><td>Custom chains for any theme</td><td>Custom playlists for any era or theme</td><td>Custom surveys for any theme</td><td>Curated songbooks for any era or theme</td></tr>
-                    <tr><td>Best For</td><td>Classic trivia lovers, competition</td><td>Word lovers; nobody gets eliminated</td><td>Social nights, weddings, mixed crowds</td><td>High energy, crowd interaction</td><td>Birthdays, parties, anyone ready to perform</td></tr>
-                    <tr><td>Crowd Vibe</td><td>Competitive, strategic, focused</td><td>Clever, collaborative, inclusive</td><td>Nostalgic, unplugged, sing-along</td><td>Loud, chaotic, hilarious</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
+                    <tr><td>Format</td><td>Word-chain puzzle race</td><td>Paper bingo with music</td><td>First-letter survey race</td><td>Survey-based guessing</td><td>Question &amp; answer trivia</td><td>Live singing performances</td></tr>
+                    <tr><td>Answer Style</td><td>Type the hidden words on phones</td><td>Dab the card when you hear it</td><td>Type the masked answers on phones</td><td>Open-ended on phones</td><td>Open-ended or multiple choice</td><td>Pick your song, sing your heart out</td></tr>
+                    <tr><td>QR Code Join</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+                    <tr><td>TV / Big Screen</td><td>Cascading chain reveals</td><td>Optional "Now Playing" display</td><td>Seven-slot board fills live</td><td>Dramatic answer reveals</td><td>Live leaderboard display</td><td>Lyrics + live singer queue</td></tr>
+                    <tr><td>Custom Content</td><td>Custom chains for any theme</td><td>Custom playlists for any era or theme</td><td>Custom prompts for any theme</td><td>Custom surveys for any theme</td><td>Custom categories &amp; questions</td><td>Curated songbooks for any era or theme</td></tr>
+                    <tr><td>Best For</td><td>Word lovers; nobody gets eliminated</td><td>Social nights, weddings, mixed crowds</td><td>Quick guessers; nobody's eliminated</td><td>High energy, crowd interaction</td><td>Classic trivia lovers, competition</td><td>Birthdays, parties, anyone ready to perform</td></tr>
+                    <tr><td>Crowd Vibe</td><td>Clever, collaborative, inclusive</td><td>Nostalgic, unplugged, sing-along</td><td>Fast, punchy, inclusive</td><td>Loud, chaotic, hilarious</td><td>Competitive, strategic, focused</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
                 </tbody>
             </table>
         </div>
