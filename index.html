@@ -244,6 +244,14 @@
         .linkedup-color { color: var(--purple-bright); }
         .offthetop-color { color: var(--coral-bright); }
         .game-tagline { color: var(--text-secondary); font-size: 0.95rem; font-style: italic; }
+        .game-credit {
+            display: inline-block; margin-top: 0.6rem;
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            padding: 0.28rem 0.7rem;
+            border: 1px solid currentColor; border-radius: 999px;
+            line-height: 1;
+        }
 
         .game-body { padding: 0 2.5rem 2.5rem; }
         .game-desc {
@@ -300,6 +308,25 @@
         .phone--has-img .phone-inner img {
             width: 100%; height: 100%;
             object-fit: contain; border-radius: 20px;
+        }
+        /* Two-phone variant + landscape big-screen (TV) frame */
+        .phones--pair { grid-template-columns: repeat(2, 1fr); max-width: 440px; }
+        .bigscreen {
+            margin-top: 1.5rem; max-width: 660px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 8px;
+        }
+        .bigscreen img {
+            display: block; width: 100%;
+            aspect-ratio: 16 / 9; object-fit: cover;
+            border-radius: 10px;
+        }
+        .bigscreen-lbl {
+            display: block; text-align: center;
+            font-size: 0.6rem; color: var(--text-muted);
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+            padding: 0.6rem 0 0.2rem;
         }
 
         /* ============ BINGO CARD (Music Bingo) ============ */
@@ -452,6 +479,7 @@
         .footer-brand img { height: 42px; width: 42px; border-radius: 6px; }
         .footer-brand span { font-weight: 700; }
         .footer p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.3rem; }
+        .footer-disclaimer { max-width: 680px; margin: 1.25rem auto 0; font-size: 0.7rem; opacity: 0.8; line-height: 1.5; }
         .footer a { color: var(--text-muted); }
         .footer a:hover { color: var(--purple-bright); }
         .footer-links { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; list-style: none; }
@@ -595,6 +623,7 @@
                     <div>
                         <h2><span class="linkedup-color">Linked Up</span></h2>
                         <p class="game-tagline">Two words given. Four hidden. One chain to crack.</p>
+                        <span class="game-credit linkedup-color">Inspired by Chain Reaction</span>
                     </div>
                 </div>
                 <div class="game-body">
@@ -633,11 +662,11 @@
                         </div>
                     </div>
 
-                    <div class="phones">
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Join</span></div></div>
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">The Chain</span></div></div>
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Big-Screen Board</span></div></div>
+                    <div class="phones phones--pair">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-join.jpeg" alt="Linked Up team join screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-chain.jpeg" alt="Linked Up chain — player view"></div></div>
                     </div>
+                    <div class="bigscreen"><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"><span class="bigscreen-lbl">On the big screen</span></div>
                 </div>
             </div>
 
@@ -740,6 +769,7 @@
                     <div>
                         <h2><span class="offthetop-color">Off the Top</span></h2>
                         <p class="game-tagline">Seven answers. First letters only. Beat the clock.</p>
+                        <span class="game-credit offthetop-color">Inspired by America Says</span>
                     </div>
                 </div>
                 <div class="game-body">
@@ -778,11 +808,11 @@
                         </div>
                     </div>
 
-                    <div class="phones">
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Join</span></div></div>
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">The Board</span></div></div>
-                        <div class="phone"><div class="phone-inner"><div class="phone-notch"></div><span class="phone-lbl">Big-Screen Board</span></div></div>
+                    <div class="phones phones--pair">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-join.jpeg" alt="Off the Top team join screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-board.jpeg" alt="Off the Top board — player view"></div></div>
                     </div>
+                    <div class="bigscreen"><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"><span class="bigscreen-lbl">On the big screen</span></div>
                 </div>
             </div>
 
@@ -792,7 +822,8 @@
                     <div class="game-icon game-icon--feud">🎯</div>
                     <div>
                         <h2><span class="feud-color">Survey Says</span></h2>
-                        <p class="game-tagline">"Family Feud Inspired"</p>
+                        <p class="game-tagline">Guess the top survey answers. Run the board.</p>
+                        <span class="game-credit feud-color">Inspired by Family Feud</span>
                     </div>
                 </div>
                 <div class="game-body">
@@ -1090,6 +1121,7 @@
         <p>&copy; 2026 Game Night Guild &mdash; A Hoeberlein Technologies Experience</p>
         <p>Built by <a href="https://hoebtech.com">Hoeberlein Technologies LLC</a> &middot; Cary, NC</p>
         <p>Call us &middot; <a href="tel:+19194542668">(919) 454-2668</a></p>
+        <p class="footer-disclaimer">Our games are original creations inspired by, but not affiliated with or endorsed by, the owners of Family Feud, America Says, or Chain Reaction. All trademarks are the property of their respective owners.</p>
         <ul class="footer-links">
             <li><a href="https://gamenightguild.net">Home</a></li>
             <li><a href="https://gamenightguild.net/#how">How It Works</a></li>
