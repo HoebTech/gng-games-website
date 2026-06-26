@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games — Game Night Guild</title>
-    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
+    <meta name="description" content="Explore the games behind Game Night Guild — the Survey Says answer showdown, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -213,7 +213,7 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .game-card:hover { box-shadow: var(--shadow-card); }
-        .game-card--feud:hover { border-color: rgba(251, 186, 31, 0.35); box-shadow: 0 4px 40px rgba(251, 186, 31, 0.08); }
+        .game-card--surveysays:hover { border-color: rgba(251, 186, 31, 0.35); box-shadow: 0 4px 40px rgba(251, 186, 31, 0.08); }
         .game-card--trivia:hover { border-color: rgba(0, 144, 186, 0.35); box-shadow: 0 4px 40px rgba(0, 144, 186, 0.08); }
         .game-card--musicbingo:hover { border-color: rgba(236, 72, 153, 0.35); box-shadow: 0 4px 40px rgba(236, 72, 153, 0.10); }
         .game-card--karaoke:hover { border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 4px 40px rgba(16, 185, 129, 0.10); }
@@ -229,7 +229,7 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.8rem; flex-shrink: 0;
         }
-        .game-icon--feud { background: var(--gold-glow); border: 1px solid rgba(251, 186, 31, 0.25); }
+        .game-icon--surveysays { background: var(--gold-glow); border: 1px solid rgba(251, 186, 31, 0.25); }
         .game-icon--trivia { background: var(--cyan-glow); border: 1px solid rgba(0, 144, 186, 0.25); }
         .game-icon--musicbingo { background: var(--pink-glow); border: 1px solid rgba(236, 72, 153, 0.25); }
         .game-icon--karaoke { background: var(--emerald-glow); border: 1px solid rgba(16, 185, 129, 0.25); }
@@ -237,7 +237,7 @@
         .game-icon--offthetop { background: var(--coral-glow); border: 1px solid rgba(242, 104, 60, 0.30); }
 
         .game-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
-        .feud-color { color: var(--gold); }
+        .surveysays-color { color: var(--gold); }
         .trivia-color { color: var(--cyan); }
         .musicbingo-color { color: var(--pink); }
         .karaoke-color { color: var(--emerald); }
@@ -791,13 +791,13 @@
             </div>
 
             <!-- FAMILY FEUD -->
-            <div class="game-card game-card--feud fi">
+            <div class="game-card game-card--surveysays fi">
                 <div class="game-header">
-                    <div class="game-icon game-icon--feud">🎯</div>
+                    <div class="game-icon game-icon--surveysays">🎯</div>
                     <div>
-                        <h2><span class="feud-color">Survey Says</span></h2>
+                        <h2><span class="surveysays-color">Survey Says</span></h2>
                         <p class="game-tagline">Guess the top survey answers. Run the board.</p>
-                        <span class="game-credit feud-color">Inspired by Family Feud</span>
+                        <span class="game-credit surveysays-color">Inspired by Family Feud</span>
                     </div>
                 </div>
                 <div class="game-body">
@@ -837,9 +837,9 @@
                     </div>
 
                     <div class="phones">
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-join.jpeg" alt="Team Join Screen"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-answer.jpeg" alt="Answer Entry"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-scoreboard.jpeg" alt="Live Scoreboard"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-join.jpeg" alt="Team Join Screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-answer.jpeg" alt="Answer Entry"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-scoreboard.jpeg" alt="Live Scoreboard"></div></div>
                     </div>
                 </div>
             </div>
@@ -1068,7 +1068,7 @@
                 </dl>
             </div>
             <div class="cmp-card">
-                <h3 class="cmp-card-title feud-color">🎯 Survey Says</h3>
+                <h3 class="cmp-card-title surveysays-color">🎯 Survey Says</h3>
                 <dl>
                     <div class="row"><dt>Format</dt><dd>Survey-based guessing</dd></div>
                     <div class="row"><dt>Answer Style</dt><dd>Open-ended on phones</dd></div>
@@ -1155,7 +1155,7 @@
 <section class="cta">
     <img src="images/gng-logo.png" alt="Game Night Guild" style="height:72px;width:72px;border-radius:10px;margin:0 auto 1.5rem;">
     <h2>Ready to See It In Action?</h2>
-    <p>Whether you want Feud, Trivia, or both — we'll build the perfect game night for your venue and your crowd.</p>
+    <p>Whether you want Survey Says, Trivia, or both — we'll build the perfect game night for your venue and your crowd.</p>
     <a href="https://gamenightguild.net/#contact" class="btn-primary">Book Your Event &rarr;</a>
     <p class="cta-phone">Or call us directly at <a href="tel:+19194542668">(919) 454-2668</a></p>
 </section>
