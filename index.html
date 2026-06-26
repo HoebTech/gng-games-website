@@ -309,25 +309,9 @@
             width: 100%; height: 100%;
             object-fit: contain; border-radius: 20px;
         }
-        /* Two-phone variant + landscape big-screen (TV) frame */
-        .phones--pair { grid-template-columns: repeat(2, 1fr); max-width: 440px; }
-        .bigscreen {
-            margin-top: 1.5rem; max-width: 660px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 8px;
-        }
-        .bigscreen img {
-            display: block; width: 100%;
-            aspect-ratio: 16 / 9; object-fit: cover;
-            border-radius: 10px;
-        }
-        .bigscreen-lbl {
-            display: block; text-align: center;
-            font-size: 0.6rem; color: var(--text-muted);
-            font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-            padding: 0.6rem 0 0.2rem;
-        }
+        /* Landscape big-screen (TV) shots: fill the phone frame via center-crop
+           so all three screenshots sit uniformly on one line. */
+        .phone--tv .phone-inner img { object-fit: cover; object-position: center; }
 
         /* ============ BINGO CARD (Music Bingo) ============ */
         .bingo-wrap {
@@ -435,14 +419,39 @@
             text-transform: uppercase; letter-spacing: 0.08em;
             color: var(--text-secondary);
         }
-        .cmp th:nth-child(2) { color: var(--cyan); }
+        .cmp th:nth-child(2) { color: var(--purple-bright); }
         .cmp th:nth-child(3) { color: var(--pink); }
-        .cmp th:nth-child(4) { color: var(--gold); }
-        .cmp th:nth-child(5) { color: var(--emerald); }
+        .cmp th:nth-child(4) { color: var(--coral-bright); }
+        .cmp th:nth-child(5) { color: var(--gold); }
+        .cmp th:nth-child(6) { color: var(--cyan); }
+        .cmp th:nth-child(7) { color: var(--emerald); }
         .cmp td { color: var(--text-secondary); }
         .cmp td:first-child { color: var(--text-primary); font-weight: 600; }
         .cmp tr:last-child td { border-bottom: none; }
         .cmp .chk { color: var(--gold); font-weight: 700; }
+        /* Per-game comparison cards (mobile only; hidden on desktop) */
+        .cmp-cards { display: none; margin-top: 2rem; }
+        .cmp-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius); padding: 1.1rem 1.25rem;
+        }
+        .cmp-card-title {
+            font-size: 1.15rem; font-weight: 800;
+            padding-bottom: 0.7rem; margin-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cmp-card dl { margin: 0; }
+        .cmp-card .row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);
+        }
+        .cmp-card .row:last-child { border-bottom: none; padding-bottom: 0; }
+        .cmp-card dt {
+            color: var(--text-muted); font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0;
+        }
+        .cmp-card dd { margin: 0; color: var(--text-secondary); font-size: 0.88rem; text-align: right; }
+        .cmp-card .row--chk dd { color: var(--gold); font-weight: 700; }
 
         /* ============ PITCH CARDS ============ */
         .pitch-grid {
@@ -519,44 +528,9 @@
             .phones { grid-template-columns: repeat(2, 1fr); max-width: 340px; }
             .features { grid-template-columns: 1fr; }
 
-            /* Comparison table → stacked feature cards on mobile */
-            .table-wrap { overflow-x: visible; }
-            .cmp {
-                min-width: 0;
-                background: transparent;
-                border: none;
-                border-radius: 0;
-                overflow: visible;
-            }
-            .cmp thead { display: none; }
-            .cmp tbody, .cmp tr, .cmp td { display: block; }
-            .cmp tr {
-                background: var(--bg-card);
-                border: 1px solid var(--border-color);
-                border-radius: var(--radius);
-                margin-bottom: 1rem;
-                padding: 0.75rem 1rem;
-            }
-            .cmp tr:last-child { margin-bottom: 0; }
-            .cmp td {
-                padding: 0.6rem 0;
-                border-bottom: 1px solid var(--border-color);
-                font-size: 0.9rem;
-            }
-            .cmp tr td:last-child { border-bottom: none; padding-bottom: 0; }
-            .cmp td:first-child {
-                color: var(--text-primary);
-                font-weight: 700;
-                font-size: 0.75rem;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                padding-top: 0;
-                padding-bottom: 0.75rem;
-            }
-            .cmp td:nth-child(2)::before { content: "🧠 Trivia: ";       color: var(--cyan); font-weight: 700; }
-            .cmp td:nth-child(3)::before { content: "🎵 Music Bingo: ";  color: var(--pink); font-weight: 700; }
-            .cmp td:nth-child(4)::before { content: "🎯 Survey Says: "; color: var(--gold); font-weight: 700; }
-            .cmp td:nth-child(5)::before { content: "🎤 Karaoke: ";      color: var(--emerald); font-weight: 700; }
+            /* Comparison: hide the wide table, show per-game cards instead */
+            .cmp { display: none; }
+            .cmp-cards { display: grid; gap: 1rem; }
         }
     </style>
 </head>
@@ -662,11 +636,11 @@
                         </div>
                     </div>
 
-                    <div class="phones phones--pair">
+                    <div class="phones">
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-join.jpeg" alt="Linked Up team join screen"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-chain.jpeg" alt="Linked Up chain — player view"></div></div>
+                        <div class="phone phone--has-img phone--tv"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"></div></div>
                     </div>
-                    <div class="bigscreen"><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"><span class="bigscreen-lbl">On the big screen</span></div>
                 </div>
             </div>
 
@@ -808,11 +782,11 @@
                         </div>
                     </div>
 
-                    <div class="phones phones--pair">
+                    <div class="phones">
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-join.jpeg" alt="Off the Top team join screen"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-board.jpeg" alt="Off the Top board — player view"></div></div>
+                        <div class="phone phone--has-img phone--tv"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"></div></div>
                     </div>
-                    <div class="bigscreen"><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"><span class="bigscreen-lbl">On the big screen</span></div>
                 </div>
             </div>
 
@@ -1054,6 +1028,81 @@
                     <tr><td>Crowd Vibe</td><td>Clever, collaborative, inclusive</td><td>Nostalgic, unplugged, sing-along</td><td>Fast, punchy, inclusive</td><td>Loud, chaotic, hilarious</td><td>Competitive, strategic, focused</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="cmp-cards fi">
+            <div class="cmp-card">
+                <h3 class="cmp-card-title linkedup-color">🔗 Linked Up</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Word-chain puzzle race</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Type the hidden words on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Cascading chain reveals</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom chains for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Word lovers; nobody gets eliminated</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Clever, collaborative, inclusive</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title musicbingo-color">🎵 Music Bingo</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Paper bingo with music</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Dab the card when you hear it</dd></div>
+                    <div class="row"><dt>QR Code Join</dt><dd>&mdash;</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Optional "Now Playing" display</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom playlists for any era or theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Social nights, weddings, mixed crowds</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Nostalgic, unplugged, sing-along</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title offthetop-color">💭 Off the Top</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>First-letter survey race</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Type the masked answers on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Seven-slot board fills live</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom prompts for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Quick guessers; nobody's eliminated</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Fast, punchy, inclusive</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title feud-color">🎯 Survey Says</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Survey-based guessing</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Open-ended on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Dramatic answer reveals</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom surveys for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>High energy, crowd interaction</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Loud, chaotic, hilarious</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title trivia-color">🧠 Trivia</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Question &amp; answer trivia</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Open-ended or multiple choice</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Live leaderboard display</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom categories &amp; questions</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Classic trivia lovers, competition</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Competitive, strategic, focused</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title karaoke-color">🎤 Karaoke</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Live singing performances</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Pick your song, sing your heart out</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Lyrics + live singer queue</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Curated songbooks for any era or theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Birthdays, parties, anyone ready to perform</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Celebratory, loud, all-in sing-alongs</dd></div>
+                </dl>
+            </div>
         </div>
     </div>
 </section>
