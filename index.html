@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games — Game Night Guild</title>
-    <meta name="description" content="Explore the games behind Game Night Guild — Family Feud-style survey showdowns, classic trivia, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
+    <meta name="description" content="Explore the games behind Game Night Guild — the Survey Says answer showdown, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -41,6 +41,10 @@
             --emerald: #10B981;
             --emerald-bright: #34D399;
             --emerald-glow: rgba(16, 185, 129, 0.15);
+
+            --coral: #F2683C;
+            --coral-bright: #FA8A5C;
+            --coral-glow: rgba(242, 104, 60, 0.16);
 
             --brown: #63492D;
 
@@ -209,10 +213,12 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .game-card:hover { box-shadow: var(--shadow-card); }
-        .game-card--feud:hover { border-color: rgba(251, 186, 31, 0.35); box-shadow: 0 4px 40px rgba(251, 186, 31, 0.08); }
+        .game-card--surveysays:hover { border-color: rgba(251, 186, 31, 0.35); box-shadow: 0 4px 40px rgba(251, 186, 31, 0.08); }
         .game-card--trivia:hover { border-color: rgba(0, 144, 186, 0.35); box-shadow: 0 4px 40px rgba(0, 144, 186, 0.08); }
         .game-card--musicbingo:hover { border-color: rgba(236, 72, 153, 0.35); box-shadow: 0 4px 40px rgba(236, 72, 153, 0.10); }
         .game-card--karaoke:hover { border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 4px 40px rgba(16, 185, 129, 0.10); }
+        .game-card--linkedup:hover { border-color: rgba(143, 92, 214, 0.40); box-shadow: 0 4px 40px rgba(96, 34, 157, 0.12); }
+        .game-card--offthetop:hover { border-color: rgba(250, 138, 92, 0.40); box-shadow: 0 4px 40px rgba(242, 104, 60, 0.12); }
 
         .game-header {
             padding: 2.5rem 2.5rem 1.5rem;
@@ -223,17 +229,29 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.8rem; flex-shrink: 0;
         }
-        .game-icon--feud { background: var(--gold-glow); border: 1px solid rgba(251, 186, 31, 0.25); }
+        .game-icon--surveysays { background: var(--gold-glow); border: 1px solid rgba(251, 186, 31, 0.25); }
         .game-icon--trivia { background: var(--cyan-glow); border: 1px solid rgba(0, 144, 186, 0.25); }
         .game-icon--musicbingo { background: var(--pink-glow); border: 1px solid rgba(236, 72, 153, 0.25); }
         .game-icon--karaoke { background: var(--emerald-glow); border: 1px solid rgba(16, 185, 129, 0.25); }
+        .game-icon--linkedup { background: var(--purple-glow); border: 1px solid rgba(96, 34, 157, 0.30); }
+        .game-icon--offthetop { background: var(--coral-glow); border: 1px solid rgba(242, 104, 60, 0.30); }
 
         .game-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
-        .feud-color { color: var(--gold); }
+        .surveysays-color { color: var(--gold); }
         .trivia-color { color: var(--cyan); }
         .musicbingo-color { color: var(--pink); }
         .karaoke-color { color: var(--emerald); }
+        .linkedup-color { color: var(--purple-bright); }
+        .offthetop-color { color: var(--coral-bright); }
         .game-tagline { color: var(--text-secondary); font-size: 0.95rem; font-style: italic; }
+        .game-credit {
+            display: inline-block; margin-top: 0.6rem;
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            padding: 0.28rem 0.7rem;
+            border: 1px solid currentColor; border-radius: 999px;
+            line-height: 1;
+        }
 
         .game-body { padding: 0 2.5rem 2.5rem; }
         .game-desc {
@@ -291,6 +309,19 @@
             width: 100%; height: 100%;
             object-fit: contain; border-radius: 20px;
         }
+        /* Linked Up & Off the Top: two phones + a landscape big-screen, all
+           aligned to the same height on one row (stacked on mobile). */
+        .shots {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .shots .phone { height: 300px; }
+        .tv-frame {
+            height: 300px; aspect-ratio: 16 / 9;
+            background: var(--bg-secondary); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 8px; overflow: hidden;
+        }
+        .tv-frame img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 
         /* ============ BINGO CARD (Music Bingo) ============ */
         .bingo-wrap {
@@ -398,14 +429,39 @@
             text-transform: uppercase; letter-spacing: 0.08em;
             color: var(--text-secondary);
         }
-        .cmp th:nth-child(2) { color: var(--cyan); }
+        .cmp th:nth-child(2) { color: var(--purple-bright); }
         .cmp th:nth-child(3) { color: var(--pink); }
-        .cmp th:nth-child(4) { color: var(--gold); }
-        .cmp th:nth-child(5) { color: var(--emerald); }
+        .cmp th:nth-child(4) { color: var(--coral-bright); }
+        .cmp th:nth-child(5) { color: var(--gold); }
+        .cmp th:nth-child(6) { color: var(--cyan); }
+        .cmp th:nth-child(7) { color: var(--emerald); }
         .cmp td { color: var(--text-secondary); }
         .cmp td:first-child { color: var(--text-primary); font-weight: 600; }
         .cmp tr:last-child td { border-bottom: none; }
         .cmp .chk { color: var(--gold); font-weight: 700; }
+        /* Per-game comparison cards (mobile only; hidden on desktop) */
+        .cmp-cards { display: none; margin-top: 2rem; }
+        .cmp-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: var(--radius); padding: 1.1rem 1.25rem;
+        }
+        .cmp-card-title {
+            font-size: 1.15rem; font-weight: 800;
+            padding-bottom: 0.7rem; margin-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cmp-card dl { margin: 0; }
+        .cmp-card .row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            gap: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-color);
+        }
+        .cmp-card .row:last-child { border-bottom: none; padding-bottom: 0; }
+        .cmp-card dt {
+            color: var(--text-muted); font-size: 0.72rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0;
+        }
+        .cmp-card dd { margin: 0; color: var(--text-secondary); font-size: 0.88rem; text-align: right; }
+        .cmp-card .row--chk dd { color: var(--gold); font-weight: 700; }
 
         /* ============ PITCH CARDS ============ */
         .pitch-grid {
@@ -442,6 +498,7 @@
         .footer-brand img { height: 42px; width: 42px; border-radius: 6px; }
         .footer-brand span { font-weight: 700; }
         .footer p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.3rem; }
+        .footer-disclaimer { max-width: 680px; margin: 1.25rem auto 0; font-size: 0.7rem; opacity: 0.8; line-height: 1.5; }
         .footer a { color: var(--text-muted); }
         .footer a:hover { color: var(--purple-bright); }
         .footer-links { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; list-style: none; }
@@ -480,45 +537,14 @@
             .game-body { padding: 0 1.5rem 2rem; }
             .phones { grid-template-columns: repeat(2, 1fr); max-width: 340px; }
             .features { grid-template-columns: 1fr; }
+            /* Linked Up / Off the Top shots: two phones on one row, board full-width below */
+            .shots { gap: 0.75rem; }
+            .shots .phone { height: auto; width: calc(50% - 0.75rem); max-width: 180px; }
+            .tv-frame { height: auto; width: 100%; }
 
-            /* Comparison table → stacked feature cards on mobile */
-            .table-wrap { overflow-x: visible; }
-            .cmp {
-                min-width: 0;
-                background: transparent;
-                border: none;
-                border-radius: 0;
-                overflow: visible;
-            }
-            .cmp thead { display: none; }
-            .cmp tbody, .cmp tr, .cmp td { display: block; }
-            .cmp tr {
-                background: var(--bg-card);
-                border: 1px solid var(--border-color);
-                border-radius: var(--radius);
-                margin-bottom: 1rem;
-                padding: 0.75rem 1rem;
-            }
-            .cmp tr:last-child { margin-bottom: 0; }
-            .cmp td {
-                padding: 0.6rem 0;
-                border-bottom: 1px solid var(--border-color);
-                font-size: 0.9rem;
-            }
-            .cmp tr td:last-child { border-bottom: none; padding-bottom: 0; }
-            .cmp td:first-child {
-                color: var(--text-primary);
-                font-weight: 700;
-                font-size: 0.75rem;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                padding-top: 0;
-                padding-bottom: 0.75rem;
-            }
-            .cmp td:nth-child(2)::before { content: "🧠 Trivia: ";       color: var(--cyan); font-weight: 700; }
-            .cmp td:nth-child(3)::before { content: "🎵 Music Bingo: ";  color: var(--pink); font-weight: 700; }
-            .cmp td:nth-child(4)::before { content: "🎯 Survey Says: "; color: var(--gold); font-weight: 700; }
-            .cmp td:nth-child(5)::before { content: "🎤 Karaoke: ";      color: var(--emerald); font-weight: 700; }
+            /* Comparison: hide the wide table, show per-game cards instead */
+            .cmp { display: none; }
+            .cmp-cards { display: grid; gap: 1rem; }
         }
     </style>
 </head>
@@ -578,55 +604,56 @@
 
         <div class="game-showcase">
 
-            <!-- TRIVIA -->
-            <div class="game-card game-card--trivia fi">
+            <!-- LINKED UP -->
+            <div class="game-card game-card--linkedup fi">
                 <div class="game-header">
-                    <div class="game-icon game-icon--trivia">🧠</div>
+                    <div class="game-icon game-icon--linkedup">🔗</div>
                     <div>
-                        <h2><span class="trivia-color">Trivia</span></h2>
-                        <p class="game-tagline">Themed rounds. Tough questions. One team walks away bragging.</p>
+                        <h2><span class="linkedup-color">Linked Up</span></h2>
+                        <p class="game-tagline">Two words given. Four hidden. One chain to crack.</p>
+                        <span class="game-credit linkedup-color">Inspired by Chain Reaction</span>
                     </div>
                 </div>
                 <div class="game-body">
-                    <p class="game-desc">Classic trivia, upgraded. Themed rounds of questions — from pop culture to history to the weird stuff nobody expects. Teams answer on their phones, our software handles scoring, and a live leaderboard keeps the competition fierce. Choose open-ended questions for the purists or multiple choice for faster-paced nights.</p>
+                    <p class="game-desc">A chain of six words where every neighbor connects — HONEY·MOON, MOON·LIGHT, LIGHT·HOUSE. The first and last words are on the board; the four in the middle are blank. Teams race to fill them in on their phones, and each correct link snaps into place live on the big screen. Rounds climb in difficulty and finish with a double-or-nothing Final Chain — and nobody ever gets eliminated.</p>
 
                     <div class="features">
                         <div class="feat">
                             <span class="ico">📱</span>
                             <h4>Scan &amp; Play</h4>
-                            <p>Same frictionless entry — QR code, team name, done. Works on any phone browser, no downloads ever.</p>
+                            <p>QR code or a four-letter code and you're in. Any phone browser — no app, no account, ever.</p>
                         </div>
                         <div class="feat">
-                            <span class="ico">🎲</span>
-                            <h4>Multiple Choice Mode</h4>
-                            <p>Auto-scored on submission — perfect for fast rounds. Or go open-ended for the real trivia heads.</p>
+                            <span class="ico">🔒</span>
+                            <h4>Locks In Live</h4>
+                            <p>Type a hidden word and it locks the instant it's right — no submit button. The host's grid lights up in real time.</p>
                         </div>
                         <div class="feat">
-                            <span class="ico">🔗</span>
-                            <h4>Stay Connected</h4>
-                            <p>Players stay connected all game — even if they switch apps or lock their phone. Pick up right where you left off.</p>
+                            <span class="ico">📈</span>
+                            <h4>Climbing Difficulty</h4>
+                            <p>Each chain is a little tougher than the last, building to a double-or-nothing Final Chain worth double the points.</p>
                         </div>
                         <div class="feat">
-                            <span class="ico">🏅</span>
-                            <h4>Live Leaderboard</h4>
-                            <p>Real-time standings after every round. Watch the lead change and the rivalries build all night long.</p>
+                            <span class="ico">📺</span>
+                            <h4>Big-Screen Board</h4>
+                            <p>The whole room follows along on a TV, with a cascading top-to-bottom reveal every time a chain is locked.</p>
                         </div>
                         <div class="feat">
-                            <span class="ico">✨</span>
-                            <h4>Endless Categories</h4>
-                            <p>Need a theme night? We can build custom trivia in any category. 90s hip-hop? NC history? Cat facts? Done.</p>
+                            <span class="ico">🤝</span>
+                            <h4>Nobody's Out</h4>
+                            <p>No eliminations — every team plays every round, and the night ends on a champions podium.</p>
                         </div>
                         <div class="feat">
-                            <span class="ico">📊</span>
-                            <h4>Perfect Pacing</h4>
-                            <p>Structured for a perfect-length game night. Enough rounds to crown a real winner without losing the crowd.</p>
+                            <span class="ico">🎨</span>
+                            <h4>Custom Chains</h4>
+                            <p>We can build chains around your crowd — local landmarks, inside jokes, theme nights. The host runs it all from a laptop.</p>
                         </div>
                     </div>
 
-                    <div class="phones">
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-join.jpeg" alt="Team Join Screen"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-question.jpeg" alt="Question View"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-leaderboard.jpeg" alt="Leaderboard"></div></div>
+                    <div class="shots">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-join.jpeg" alt="Linked Up team join screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-chain.jpeg" alt="Linked Up chain — player view"></div></div>
+                        <div class="tv-frame"><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"></div>
                     </div>
                 </div>
             </div>
@@ -723,13 +750,68 @@
                 </div>
             </div>
 
-            <!-- FAMILY FEUD -->
-            <div class="game-card game-card--feud fi">
+            <!-- OFF THE TOP -->
+            <div class="game-card game-card--offthetop fi">
                 <div class="game-header">
-                    <div class="game-icon game-icon--feud">🎯</div>
+                    <div class="game-icon game-icon--offthetop">💭</div>
                     <div>
-                        <h2><span class="feud-color">Survey Says</span></h2>
-                        <p class="game-tagline">"Family Feud Inspired"</p>
+                        <h2><span class="offthetop-color">Off the Top</span></h2>
+                        <p class="game-tagline">Seven answers. First letters only. Beat the clock.</p>
+                        <span class="game-credit offthetop-color">Inspired by America Says</span>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">A fill-in-the-blank prompt with seven top survey answers — the kind of question where everyone at the table has a guess. The board reveals the first letter of each answer and masks the rest; teams race to type them on their phones, and every slot locks the instant a team nails it. Stuck tables can spend points to buy a hint letter. Questions climb in difficulty and finish with a double-or-nothing Final — and nobody ever gets eliminated.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📱</span>
+                            <h4>Scan &amp; Play</h4>
+                            <p>QR code or a four-letter code and you're in. Any phone browser — no app, no account, ever.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔓</span>
+                            <h4>Locks On Sight</h4>
+                            <p>Type an answer and the matching slot locks the moment you nail it — no submit button, no waiting your turn.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">💡</span>
+                            <h4>Buy a Hint</h4>
+                            <p>Stuck on the board? Spend a few points to reveal another letter and keep your table in the hunt.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📺</span>
+                            <h4>Big-Screen Board</h4>
+                            <p>The whole room watches the seven-slot board fill in live, one satisfying reveal at a time.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📈</span>
+                            <h4>Climbing Difficulty</h4>
+                            <p>Questions get tougher as the night goes on, building to a double-or-nothing Final worth double the points.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🤝</span>
+                            <h4>Nobody's Out</h4>
+                            <p>No eliminations — every team plays every question, and the night ends on a champions podium.</p>
+                        </div>
+                    </div>
+
+                    <div class="shots">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-join.jpeg" alt="Off the Top team join screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-board.jpeg" alt="Off the Top board — player view"></div></div>
+                        <div class="tv-frame"><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAMILY FEUD -->
+            <div class="game-card game-card--surveysays fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--surveysays">🎯</div>
+                    <div>
+                        <h2><span class="surveysays-color">Survey Says</span></h2>
+                        <p class="game-tagline">Guess the top survey answers. Run the board.</p>
+                        <span class="game-credit surveysays-color">Inspired by Family Feud</span>
                     </div>
                 </div>
                 <div class="game-body">
@@ -769,9 +851,62 @@
                     </div>
 
                     <div class="phones">
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-join.jpeg" alt="Team Join Screen"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-answer.jpeg" alt="Answer Entry"></div></div>
-                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/feud-scoreboard.jpeg" alt="Live Scoreboard"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-join.jpeg" alt="Team Join Screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-answer.jpeg" alt="Answer Entry"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/surveysays-scoreboard.jpeg" alt="Live Scoreboard"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRIVIA -->
+            <div class="game-card game-card--trivia fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--trivia">🧠</div>
+                    <div>
+                        <h2><span class="trivia-color">Trivia</span></h2>
+                        <p class="game-tagline">Themed rounds. Tough questions. One team walks away bragging.</p>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">Classic trivia, upgraded. Themed rounds of questions — from pop culture to history to the weird stuff nobody expects. Teams answer on their phones, our software handles scoring, and a live leaderboard keeps the competition fierce. Choose open-ended questions for the purists or multiple choice for faster-paced nights.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📱</span>
+                            <h4>Scan &amp; Play</h4>
+                            <p>Same frictionless entry — QR code, team name, done. Works on any phone browser, no downloads ever.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🎲</span>
+                            <h4>Multiple Choice Mode</h4>
+                            <p>Auto-scored on submission — perfect for fast rounds. Or go open-ended for the real trivia heads.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔗</span>
+                            <h4>Stay Connected</h4>
+                            <p>Players stay connected all game — even if they switch apps or lock their phone. Pick up right where you left off.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🏅</span>
+                            <h4>Live Leaderboard</h4>
+                            <p>Real-time standings after every round. Watch the lead change and the rivalries build all night long.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">✨</span>
+                            <h4>Endless Categories</h4>
+                            <p>Need a theme night? We can build custom trivia in any category. 90s hip-hop? NC history? Cat facts? Done.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📊</span>
+                            <h4>Perfect Pacing</h4>
+                            <p>Structured for a perfect-length game night. Enough rounds to crown a real winner without losing the crowd.</p>
+                        </div>
+                    </div>
+
+                    <div class="phones">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-join.jpeg" alt="Team Join Screen"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-question.jpeg" alt="Question View"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/trivia-leaderboard.jpeg" alt="Leaderboard"></div></div>
                     </div>
                 </div>
             </div>
@@ -882,29 +1017,106 @@
     <div class="section-inner">
         <div class="section-label">Side by Side</div>
         <h2 class="section-title">Which Game Fits Your Night?</h2>
-        <p class="section-subtitle">Both games run on the same rock-solid tech. The difference is the vibe — pick the one that matches your crowd, or book both for the ultimate game night.</p>
+        <p class="section-subtitle">Every game runs on the same rock-solid tech. The difference is the vibe — pick the one that matches your crowd, or book a few for the ultimate game night.</p>
 
         <div class="table-wrap fi">
             <table class="cmp">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>🧠 Trivia</th>
+                        <th>🔗 Linked Up</th>
                         <th>🎵 Music Bingo</th>
+                        <th>💭 Off the Top</th>
                         <th>🎯 Survey Says</th>
+                        <th>🧠 Trivia</th>
                         <th>🎤 Karaoke</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Format</td><td>Question &amp; answer trivia</td><td>Paper bingo with music</td><td>Survey-based guessing</td><td>Live singing performances</td></tr>
-                    <tr><td>Answer Style</td><td>Open-ended or multiple choice</td><td>Dab the card when you hear it</td><td>Open-ended on phones</td><td>Pick your song, sing your heart out</td></tr>
-                    <tr><td>QR Code Join</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td></tr>
-                    <tr><td>TV / Big Screen</td><td>Live leaderboard display</td><td>Optional "Now Playing" display</td><td>Dramatic answer reveals</td><td>Lyrics + live singer queue</td></tr>
-                    <tr><td>Custom Content</td><td>Custom categories &amp; questions</td><td>Custom playlists for any era or theme</td><td>Custom surveys for any theme</td><td>Curated songbooks for any era or theme</td></tr>
-                    <tr><td>Best For</td><td>Classic trivia lovers, competition</td><td>Social nights, weddings, mixed crowds</td><td>High energy, crowd interaction</td><td>Birthdays, parties, anyone ready to perform</td></tr>
-                    <tr><td>Crowd Vibe</td><td>Competitive, strategic, focused</td><td>Nostalgic, unplugged, sing-along</td><td>Loud, chaotic, hilarious</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
+                    <tr><td>Format</td><td>Word-chain puzzle race</td><td>Paper bingo with music</td><td>First-letter survey race</td><td>Survey-based guessing</td><td>Question &amp; answer trivia</td><td>Live singing performances</td></tr>
+                    <tr><td>Answer Style</td><td>Type the hidden words on phones</td><td>Dab the card when you hear it</td><td>Type the masked answers on phones</td><td>Open-ended on phones</td><td>Open-ended or multiple choice</td><td>Pick your song, sing your heart out</td></tr>
+                    <tr><td>QR Code Join</td><td class="chk">✓</td><td>—</td><td class="chk">✓</td><td class="chk">✓</td><td class="chk">✓</td><td class="chk">✓</td></tr>
+                    <tr><td>TV / Big Screen</td><td>Cascading chain reveals</td><td>Optional "Now Playing" display</td><td>Seven-slot board fills live</td><td>Dramatic answer reveals</td><td>Live leaderboard display</td><td>Lyrics + live singer queue</td></tr>
+                    <tr><td>Custom Content</td><td>Custom chains for any theme</td><td>Custom playlists for any era or theme</td><td>Custom prompts for any theme</td><td>Custom surveys for any theme</td><td>Custom categories &amp; questions</td><td>Curated songbooks for any era or theme</td></tr>
+                    <tr><td>Best For</td><td>Word lovers; nobody gets eliminated</td><td>Social nights, weddings, mixed crowds</td><td>Quick guessers; nobody's eliminated</td><td>High energy, crowd interaction</td><td>Classic trivia lovers, competition</td><td>Birthdays, parties, anyone ready to perform</td></tr>
+                    <tr><td>Crowd Vibe</td><td>Clever, collaborative, inclusive</td><td>Nostalgic, unplugged, sing-along</td><td>Fast, punchy, inclusive</td><td>Loud, chaotic, hilarious</td><td>Competitive, strategic, focused</td><td>Celebratory, loud, all-in sing-alongs</td></tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="cmp-cards fi">
+            <div class="cmp-card">
+                <h3 class="cmp-card-title linkedup-color">🔗 Linked Up</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Word-chain puzzle race</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Type the hidden words on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Cascading chain reveals</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom chains for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Word lovers; nobody gets eliminated</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Clever, collaborative, inclusive</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title musicbingo-color">🎵 Music Bingo</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Paper bingo with music</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Dab the card when you hear it</dd></div>
+                    <div class="row"><dt>QR Code Join</dt><dd>&mdash;</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Optional "Now Playing" display</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom playlists for any era or theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Social nights, weddings, mixed crowds</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Nostalgic, unplugged, sing-along</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title offthetop-color">💭 Off the Top</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>First-letter survey race</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Type the masked answers on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Seven-slot board fills live</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom prompts for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Quick guessers; nobody's eliminated</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Fast, punchy, inclusive</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title surveysays-color">🎯 Survey Says</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Survey-based guessing</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Open-ended on phones</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Dramatic answer reveals</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom surveys for any theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>High energy, crowd interaction</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Loud, chaotic, hilarious</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title trivia-color">🧠 Trivia</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Question &amp; answer trivia</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Open-ended or multiple choice</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Live leaderboard display</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Custom categories &amp; questions</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Classic trivia lovers, competition</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Competitive, strategic, focused</dd></div>
+                </dl>
+            </div>
+            <div class="cmp-card">
+                <h3 class="cmp-card-title karaoke-color">🎤 Karaoke</h3>
+                <dl>
+                    <div class="row"><dt>Format</dt><dd>Live singing performances</dd></div>
+                    <div class="row"><dt>Answer Style</dt><dd>Pick your song, sing your heart out</dd></div>
+                    <div class="row row--chk"><dt>QR Code Join</dt><dd>✓</dd></div>
+                    <div class="row"><dt>TV / Big Screen</dt><dd>Lyrics + live singer queue</dd></div>
+                    <div class="row"><dt>Custom Content</dt><dd>Curated songbooks for any era or theme</dd></div>
+                    <div class="row"><dt>Best For</dt><dd>Birthdays, parties, anyone ready to perform</dd></div>
+                    <div class="row"><dt>Crowd Vibe</dt><dd>Celebratory, loud, all-in sing-alongs</dd></div>
+                </dl>
+            </div>
         </div>
     </div>
 </section>
@@ -957,7 +1169,7 @@
 <section class="cta">
     <img src="images/gng-logo.png" alt="Game Night Guild" style="height:72px;width:72px;border-radius:10px;margin:0 auto 1.5rem;">
     <h2>Ready to See It In Action?</h2>
-    <p>Whether you want Feud, Trivia, or both — we'll build the perfect game night for your venue and your crowd.</p>
+    <p>Whether you want Survey Says, Trivia, or both — we'll build the perfect game night for your venue and your crowd.</p>
     <a href="https://gamenightguild.net/#contact" class="btn-primary">Book Your Event &rarr;</a>
     <p class="cta-phone">Or call us directly at <a href="tel:+19194542668">(919) 454-2668</a></p>
 </section>
@@ -972,6 +1184,7 @@
         <p>&copy; 2026 Game Night Guild &mdash; A Hoeberlein Technologies Experience</p>
         <p>Built by <a href="https://hoebtech.com">Hoeberlein Technologies LLC</a> &middot; Cary, NC</p>
         <p>Call us &middot; <a href="tel:+19194542668">(919) 454-2668</a></p>
+        <p class="footer-disclaimer">Our games are original creations inspired by, but not affiliated with or endorsed by, the owners of Family Feud, America Says, or Chain Reaction. All trademarks are the property of their respective owners.</p>
         <ul class="footer-links">
             <li><a href="https://gamenightguild.net">Home</a></li>
             <li><a href="https://gamenightguild.net/#how">How It Works</a></li>
