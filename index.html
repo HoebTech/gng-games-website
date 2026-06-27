@@ -309,9 +309,19 @@
             width: 100%; height: 100%;
             object-fit: contain; border-radius: 20px;
         }
-        /* Landscape big-screen (TV) shots: fill the phone frame via center-crop
-           so all three screenshots sit uniformly on one line. */
-        .phone--tv .phone-inner img { object-fit: cover; object-position: center; }
+        /* Linked Up & Off the Top: two phones + a landscape big-screen, all
+           aligned to the same height on one row (stacked on mobile). */
+        .shots {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .shots .phone { height: 300px; }
+        .tv-frame {
+            height: 300px; aspect-ratio: 16 / 9;
+            background: var(--bg-secondary); border: 1px solid var(--border-color);
+            border-radius: 18px; padding: 8px; overflow: hidden;
+        }
+        .tv-frame img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 
         /* ============ BINGO CARD (Music Bingo) ============ */
         .bingo-wrap {
@@ -527,6 +537,10 @@
             .game-body { padding: 0 1.5rem 2rem; }
             .phones { grid-template-columns: repeat(2, 1fr); max-width: 340px; }
             .features { grid-template-columns: 1fr; }
+            /* Linked Up / Off the Top shots: two phones on one row, board full-width below */
+            .shots { gap: 0.75rem; }
+            .shots .phone { height: auto; width: calc(50% - 0.75rem); max-width: 180px; }
+            .tv-frame { height: auto; width: 100%; }
 
             /* Comparison: hide the wide table, show per-game cards instead */
             .cmp { display: none; }
@@ -636,10 +650,10 @@
                         </div>
                     </div>
 
-                    <div class="phones">
+                    <div class="shots">
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-join.jpeg" alt="Linked Up team join screen"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-chain.jpeg" alt="Linked Up chain — player view"></div></div>
-                        <div class="phone phone--has-img phone--tv"><div class="phone-inner"><div class="phone-notch"></div><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"></div></div>
+                        <div class="tv-frame"><img src="images/linkedup-board.jpeg" alt="Linked Up big-screen chain board"></div>
                     </div>
                 </div>
             </div>
@@ -782,10 +796,10 @@
                         </div>
                     </div>
 
-                    <div class="phones">
+                    <div class="shots">
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-join.jpeg" alt="Off the Top team join screen"></div></div>
                         <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-board.jpeg" alt="Off the Top board — player view"></div></div>
-                        <div class="phone phone--has-img phone--tv"><div class="phone-inner"><div class="phone-notch"></div><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"></div></div>
+                        <div class="tv-frame"><img src="images/offthetop-bigscreen.jpeg" alt="Off the Top big-screen answer board"></div>
                     </div>
                 </div>
             </div>
