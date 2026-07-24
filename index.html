@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Games — Game Night Guild</title>
-    <meta name="description" content="Explore the games behind Game Night Guild — the Survey Says answer showdown, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, and live karaoke, all powered by custom-built software and live hosts.">
+    <meta name="description" content="Explore the games behind Game Night Guild — the Survey Says answer showdown, classic trivia, the Linked Up word-chain race, the Off the Top first-letter survey race, old-school music bingo, live karaoke, and GNG Tournaments — venue-run bracket software for any head-to-head game — all powered by custom-built software and live hosts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -227,6 +227,7 @@
         .game-card--karaoke:hover { border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 4px 40px rgba(16, 185, 129, 0.10); }
         .game-card--linkedup:hover { border-color: rgba(143, 92, 214, 0.40); box-shadow: 0 4px 40px rgba(96, 34, 157, 0.12); }
         .game-card--offthetop:hover { border-color: rgba(250, 138, 92, 0.40); box-shadow: 0 4px 40px rgba(242, 104, 60, 0.12); }
+        .game-card--tournaments:hover { border-color: rgba(251, 186, 31, 0.35); box-shadow: 0 4px 40px rgba(251, 186, 31, 0.08); }
 
         .game-header {
             padding: 2.5rem 2.5rem 1.5rem;
@@ -243,6 +244,7 @@
         .game-icon--karaoke { background: var(--emerald-glow); border: 1px solid rgba(16, 185, 129, 0.25); }
         .game-icon--linkedup { background: var(--purple-glow); border: 1px solid rgba(96, 34, 157, 0.30); }
         .game-icon--offthetop { background: var(--coral-glow); border: 1px solid rgba(242, 104, 60, 0.30); }
+        .game-icon--tournaments { background: var(--gold-glow); border: 1px solid rgba(251, 186, 31, 0.25); }
 
         .game-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.3rem; }
         .surveysays-color { color: var(--gold); }
@@ -251,6 +253,7 @@
         .karaoke-color { color: var(--emerald); }
         .linkedup-color { color: var(--purple-bright); }
         .offthetop-color { color: var(--coral-bright); }
+        .tournaments-color { color: var(--gold); }
         .game-tagline { color: var(--text-secondary); font-size: 0.95rem; font-style: italic; }
         .game-credit {
             display: inline-block; margin-top: 0.6rem;
@@ -282,6 +285,31 @@
         .feat .ico { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
         .feat h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
         .feat p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Tournament formats */
+        .formats-head {
+            font-size: 1.1rem; font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+        .formats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem; margin-bottom: 2rem;
+        }
+        .format {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            transition: border-color 0.25s;
+        }
+        .format:hover { border-color: rgba(251, 186, 31, 0.20); }
+        .format h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--gold); }
+        .format p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+        .format .format-meta {
+            display: block; margin-top: 0.6rem;
+            font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-muted); opacity: 0.7;
+        }
 
         /* Phone mockups */
         .phones {
@@ -545,6 +573,7 @@
             .game-body { padding: 0 1.5rem 2rem; }
             .phones { grid-template-columns: repeat(2, 1fr); max-width: 340px; }
             .features { grid-template-columns: 1fr; }
+            .formats { grid-template-columns: 1fr; }
             /* Linked Up / Off the Top shots: two phones on one row, board full-width below */
             .shots { gap: 0.75rem; }
             .shots .phone { height: auto; width: calc(50% - 0.75rem); max-width: 180px; }
@@ -570,6 +599,7 @@
         </button>
         <ul class="nav-links">
             <li><a href="#games">Our Games</a></li>
+            <li><a href="#tournaments">Tournaments</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#compare">Compare</a></li>
             <li><a href="#why-book">Why Book</a></li>
@@ -977,6 +1007,120 @@
 
 <hr class="divider">
 
+<!-- GNG TOURNAMENTS -->
+<section class="section" id="tournaments">
+    <div class="section-inner">
+        <div class="section-label">For Leagues &amp; Venues</div>
+        <h2 class="section-title">Run Your Own Tournament.</h2>
+        <p class="section-subtitle">Not a hosted game night — bracket software your venue runs itself. Run a live tournament from your phone while the bar watches the bracket on TV.</p>
+
+        <div class="game-showcase">
+            <div class="game-card game-card--tournaments fi">
+                <div class="game-header">
+                    <div class="game-icon game-icon--tournaments">🏆</div>
+                    <div>
+                        <h2><span class="tournaments-color">GNG Tournaments</span></h2>
+                        <p class="game-tagline">Run the night from your phone. The room watches the bracket on TV.</p>
+                    </div>
+                </div>
+                <div class="game-body">
+                    <p class="game-desc">GNG Tournaments turns a paper bracket into a live show. Enter your teams — solo players or pairs, or let the app draw them A/B and reveal the pairings on the TV — pick a format, and start. From there the night is a loop: the app offers the next match, you tap the winner, and it advances the bracket, drops losers where they belong, and surfaces whatever's ready to play next. Shuffleboard, cornhole, darts, or anything else you can crown a champion in.</p>
+
+                    <div class="features">
+                        <div class="feat">
+                            <span class="ico">📺</span>
+                            <h4>Big-Screen Board</h4>
+                            <p>A second screen for the room — no login, just open it on the pub's TV. On a big bracket a broadcast-style camera pans and zooms section by section so names read from across the room, with a minimap showing where you are.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">👆</span>
+                            <h4>Tap the Winner</h4>
+                            <p>A result is just a winner — tap it and the board moves on. Recording a score is optional, any result can be undone, and multiple matches run at once when more than one table is going.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🗂️</span>
+                            <h4>Nine Ways to Play</h4>
+                            <p>Seven formats plus two variants — from one-loss-and-out to Swiss and pool play. Two to twenty-four teams, solo players or pairs. Byes fill in automatically.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📚</span>
+                            <h4>Saved Tournaments</h4>
+                            <p>Every night is stored, so a bracket can pause and resume days later. Finished tournaments stay on file to look back at, reopening to their champion screen.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">📊</span>
+                            <h4>Player Records</h4>
+                            <p>Wins, losses, win percentage, and tournament wins — split by season and lifetime, updating the moment a winner is tapped. Export any tournament, or the whole history, to CSV in one tap.</p>
+                        </div>
+                        <div class="feat">
+                            <span class="ico">🔒</span>
+                            <h4>Public Board, Private Controls</h4>
+                            <p>The TV board is open to the room and read-only; the host dashboard is PIN-locked. Scan a code on the laptop to take over hosting from your phone — no login to fumble.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="formats-head">Every Format, In Full</h3>
+                    <div class="formats">
+                        <div class="format">
+                            <h4>Single Elimination</h4>
+                            <p>One loss and you're out. Byes fill automatically for any team count that isn't a power of two.</p>
+                            <span class="format-meta">N − 1 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Double Elimination</h4>
+                            <p>Everyone gets two lives — lose once and you drop to the losers' bracket for a second chance. Includes the bracket-reset final if the losers' champion beats the undefeated finalist.</p>
+                            <span class="format-meta">2N − 2 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Triple Elimination</h4>
+                            <p>Three lives — nobody's out until their third loss. Runs the full tournament map, right through a final series that repeats until someone's third loss ends it.</p>
+                            <span class="format-meta">8 teams · 22 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Round Robin</h4>
+                            <p>Everyone plays everyone. Standings by record, with points as the tiebreaker when scores are recorded.</p>
+                            <span class="format-meta">N × (N − 1) ÷ 2 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>King of the Table</h4>
+                            <p>Winner stays on, the queue rotates in, and the longest reign takes the night. No fixed end — play until closing time.</p>
+                            <span class="format-meta">Open-ended</span>
+                        </div>
+                        <div class="format">
+                            <h4>Swiss</h4>
+                            <p>Nobody's eliminated. Every round pairs you against someone with a similar record, so games stay competitive from first round to last — the best fit for a big field on a tight clock.</p>
+                            <span class="format-meta">4–24 teams · you set the rounds</span>
+                        </div>
+                        <div class="format">
+                            <h4>Pool Play → Bracket</h4>
+                            <p>Two tournaments in one night. The field splits into pools of three or four for round-robin play, then the top finishers advance into a single-elimination playoff.</p>
+                            <span class="format-meta">6–24 teams</span>
+                        </div>
+                        <div class="format">
+                            <h4>Double Round Robin</h4>
+                            <p>Everyone plays everyone twice. Doubles the sample size and settles the "we only lost because of one bad game" argument. Best for smaller fields.</p>
+                            <span class="format-meta">Variant of Round Robin · N × (N − 1) games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Single Elimination + Consolation</h4>
+                            <p>First-round losers drop into their own bracket and play for a B-side title. Nobody drives out after one game, and there are two trophies at the end of the night.</p>
+                            <span class="format-meta">Variant of Single Elimination</span>
+                        </div>
+                    </div>
+
+                    <div class="shots">
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/tournaments-live.jpeg" alt="Host dashboard — Live tab"></div></div>
+                        <div class="phone phone--has-img"><div class="phone-inner"><div class="phone-notch"></div><img src="images/tournaments-bracket.jpeg" alt="Host dashboard — bracket view"></div></div>
+                        <div class="tv-frame"><img src="images/tournaments-board.jpeg" alt="TV board — live bracket"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
 <!-- HOW IT WORKS -->
 <section class="section" id="how-it-works">
     <div class="section-inner">
@@ -1016,9 +1160,14 @@
             Skip the QR code — our host hands out paper cards and dabbers, then spins the playlist. Listen, dab each song you hear, and shout <em>BINGO</em> when you fill a line.
         </p>
 
-        <p class="section-subtitle" style="margin-bottom: 0;">
+        <p class="section-subtitle" style="margin-bottom: 1rem;">
             <strong style="color: var(--emerald);">Singing Karaoke?</strong>
             Scan the QR code to request your song and watch the queue. When your name hits the top of the list, grab the mic — the host calls you up and the lyrics roll on the big screen.
+        </p>
+
+        <p class="section-subtitle" style="margin-bottom: 0;">
+            <strong style="color: var(--gold);">Playing a Tournament?</strong>
+            There's nothing to join — the host runs the bracket and records results as matches finish. Just play your match, then watch the big screen to see who's up next and where you land.
         </p>
     </div>
 </section>
