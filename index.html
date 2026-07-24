@@ -286,6 +286,31 @@
         .feat h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
         .feat p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
+        /* Tournament formats */
+        .formats-head {
+            font-size: 1.1rem; font-weight: 800;
+            margin-bottom: 1.25rem;
+        }
+        .formats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem; margin-bottom: 2rem;
+        }
+        .format {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            transition: border-color 0.25s;
+        }
+        .format:hover { border-color: rgba(251, 186, 31, 0.20); }
+        .format h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--gold); }
+        .format p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+        .format .format-meta {
+            display: block; margin-top: 0.6rem;
+            font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--text-muted); opacity: 0.7;
+        }
+
         /* Phone mockups */
         .phones {
             display: grid; grid-template-columns: repeat(3, 1fr);
@@ -548,6 +573,7 @@
             .game-body { padding: 0 1.5rem 2rem; }
             .phones { grid-template-columns: repeat(2, 1fr); max-width: 340px; }
             .features { grid-template-columns: 1fr; }
+            .formats { grid-template-columns: 1fr; }
             /* Linked Up / Off the Top shots: two phones on one row, board full-width below */
             .shots { gap: 0.75rem; }
             .shots .phone { height: auto; width: calc(50% - 0.75rem); max-width: 180px; }
@@ -1013,8 +1039,8 @@
                         </div>
                         <div class="feat">
                             <span class="ico">🗂️</span>
-                            <h4>Five Formats</h4>
-                            <p>Single, double, and triple elimination, round robin, and King of the Table. Two to twenty-four teams, solo players or pairs. Byes fill in automatically.</p>
+                            <h4>Nine Ways to Play</h4>
+                            <p>Seven formats plus two variants — from one-loss-and-out to Swiss and pool play. Two to twenty-four teams, solo players or pairs. Byes fill in automatically.</p>
                         </div>
                         <div class="feat">
                             <span class="ico">📚</span>
@@ -1030,6 +1056,55 @@
                             <span class="ico">🔒</span>
                             <h4>Public Board, Private Controls</h4>
                             <p>The TV board is open to the room and read-only; the host dashboard is PIN-locked. Scan a code on the laptop to take over hosting from your phone — no login to fumble.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="formats-head">Every Format, In Full</h3>
+                    <div class="formats">
+                        <div class="format">
+                            <h4>Single Elimination</h4>
+                            <p>One loss and you're out. Byes fill automatically for any team count that isn't a power of two.</p>
+                            <span class="format-meta">N − 1 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Double Elimination</h4>
+                            <p>Everyone gets two lives — lose once and you drop to the losers' bracket for a second chance. Includes the bracket-reset final if the losers' champion beats the undefeated finalist.</p>
+                            <span class="format-meta">2N − 2 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Triple Elimination</h4>
+                            <p>Three lives — nobody's out until their third loss. Runs the full tournament map, right through a final series that repeats until someone's third loss ends it.</p>
+                            <span class="format-meta">8 teams · 22 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Round Robin</h4>
+                            <p>Everyone plays everyone. Standings by record, with points as the tiebreaker when scores are recorded.</p>
+                            <span class="format-meta">N × (N − 1) ÷ 2 games</span>
+                        </div>
+                        <div class="format">
+                            <h4>King of the Table</h4>
+                            <p>Winner stays on, the queue rotates in, and the longest reign takes the night. No fixed end — play until closing time.</p>
+                            <span class="format-meta">Open-ended</span>
+                        </div>
+                        <div class="format">
+                            <h4>Swiss</h4>
+                            <p>Nobody's eliminated. Every round pairs you against someone with a similar record, so games stay competitive from first round to last — the best fit for a big field on a tight clock.</p>
+                            <span class="format-meta">4–24 teams · you set the rounds</span>
+                        </div>
+                        <div class="format">
+                            <h4>Pool Play → Bracket</h4>
+                            <p>Two tournaments in one night. The field splits into pools of three or four for round-robin play, then the top finishers advance into a single-elimination playoff.</p>
+                            <span class="format-meta">6–24 teams</span>
+                        </div>
+                        <div class="format">
+                            <h4>Double Round Robin</h4>
+                            <p>Everyone plays everyone twice. Doubles the sample size and settles the "we only lost because of one bad game" argument. Best for smaller fields.</p>
+                            <span class="format-meta">Variant of Round Robin · N × (N − 1) games</span>
+                        </div>
+                        <div class="format">
+                            <h4>Single Elimination + Consolation</h4>
+                            <p>First-round losers drop into their own bracket and play for a B-side title. Nobody drives out after one game, and there are two trophies at the end of the night.</p>
+                            <span class="format-meta">Variant of Single Elimination</span>
                         </div>
                     </div>
 
